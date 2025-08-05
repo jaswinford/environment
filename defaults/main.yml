@@ -1,0 +1,7 @@
+---
+# defaults file for jaswinford-environment
+
+jas_env_use_tailscale: false
+jas_env_use_virtualbox: false
+jas_env_use_brew: false
+jas_env_full: false

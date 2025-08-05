@@ -1,0 +1,25 @@
+---
+
+- name: Install CLI tools in Ubuntu
+  become: true
+  apt:
+    name:
+      - git
+      - zsh
+      - unzip
+      - fonts-jetbrains-mono
+      - fonts-powerline
+      - tig
+      - tmux
+      - ripgrep
+      - fd-find
+      - jq
+      - htop
+      - python3-pip
+      - xclip
+      - moreutils
+      - neovim
+      - keychain
+      - gnupg
+      - luarocks
+    state: present

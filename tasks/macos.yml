@@ -1,0 +1,23 @@
+---
+
+- name: Install OSX command line tools
+  include_role:
+    name: elliotweiser.osx-command-line-tools
+
+- name: Install CLI tools in MacOSX
+  loop:
+    - git
+    - unzip
+    - tmux
+    - ripgrep
+    - fd
+    - jq
+    - htop
+    - moreutils
+    - font-jetbrains-mono
+    - neovim
+    - gnupg
+    - luarocks
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present

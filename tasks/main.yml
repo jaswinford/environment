@@ -1,0 +1,23 @@
+---
+
+- name: Setup MacOS environment
+  import_tasks: macos.yml
+  when: ansible_distribution == "MacOSX"
+
+- name: Setup Ubuntu environment
+  import_tasks: ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Setup WSL environment
+  import_tasks: wsl.yml
+  when: ansible_kernel is search("microsoft")
+
+- name: Create local bin directory
+  file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: 0755
+
+- name: Install Oh My zsh
+  import_tasks: zsh.yml
+
