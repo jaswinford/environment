@@ -1,5 +1,8 @@
 ---
 
+- name: Gather facts
+  ansible.builtin.gather_facts: {}
+
 - name: Setup MacOS environment
   import_tasks: macos.yml
   when: ansible_distribution == "MacOSX"
@@ -21,3 +24,5 @@
 - name: Install Oh My zsh
   import_tasks: zsh.yml
 
+- name: Install dotfiles
+  shell: 'sh -c "$(curl -fsLS get.chezmoi.io)" -- -b {{ ansible_env.HOME }}/.local/bin init --apply jaswinford'
