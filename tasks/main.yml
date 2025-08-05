@@ -40,13 +40,13 @@
   become: true
   community.general.flatpak:
     name:
-      - ch.theologeek.Manuskript
       - com.discordapp.Discord
       - com.spotify.Client
       - com.valvesoftware.Steam
       - io.kinvolk.Headlamp
-      - io.pdman_desktop.PodmanDesktop
+      - md.obsidian.Obsidian
       - net.cozic.joplin_desktop
+      - org.prismlauncher.PrismLauncher
       - org.videolan.VLC
   tags:
     - flatpaks
@@ -58,7 +58,6 @@
       - com.google.Chrome
       - org.chromium.Chromium
       - org.mozilla.firefox
-  when: kah_env_use_flatpak_browsers
   tags:
     - flatpaks
 
