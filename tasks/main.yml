@@ -26,3 +26,39 @@
 
 - name: Install dotfiles
   shell: 'sh -c "$(curl -fsLS get.chezmoi.io)" -- -b {{ ansible_env.HOME }}/.local/bin init --apply jaswinford'
+
+- name: Add flathub
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  tags:
+    - flatpaks
+
+- name: Install flatpaks
+  become: true
+  community.general.flatpak:
+    name:
+      - ch.theologeek.Manuskript
+      - com.discordapp.Discord
+      - com.spotify.Client
+      - com.valvesoftware.Steam
+      - io.kinvolk.Headlamp
+      - io.pdman_desktop.PodmanDesktop
+      - net.cozic.joplin_desktop
+      - org.videolan.VLC
+  tags:
+    - flatpaks
+
+- name: Install browsers via flatpak
+  become: true
+  community.general.flatpak:
+    name:
+      - com.google.Chrome
+      - org.chromium.Chromium
+      - org.mozilla.firefox
+  when: kah_env_use_flatpak_browsers
+  tags:
+    - flatpaks
+
