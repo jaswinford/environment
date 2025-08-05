@@ -6,6 +6,9 @@
 
 - name: Install CLI tools in MacOSX
   loop:
+    - ansbile
+    - ansible-lint
+    - flatpak
     - git
     - unzip
     - tmux

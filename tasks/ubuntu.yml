@@ -4,6 +4,9 @@
   become: true
   apt:
     name:
+      - ansible
+      - ansible-lint
+      - flatpak
       - git
       - zsh
       - unzip
