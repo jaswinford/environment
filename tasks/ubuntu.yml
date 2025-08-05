@@ -40,14 +40,9 @@
   become: true
   community.general.flatpak:
     name:
-      - com.discordapp.Discord
-      - com.spotify.Client
-      - com.valvesoftware.Steam
       - io.kinvolk.Headlamp
       - md.obsidian.Obsidian
       - net.cozic.joplin_desktop
-      - org.prismlauncher.PrismLauncher
-      - org.videolan.VLC
   tags:
     - flatpaks
 
