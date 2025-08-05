@@ -26,3 +26,37 @@
       - gnupg
       - luarocks
     state: present
+
+- name: Add flathub
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  tags:
+    - flatpaks
+
+- name: Install flatpaks
+  become: true
+  community.general.flatpak:
+    name:
+      - com.discordapp.Discord
+      - com.spotify.Client
+      - com.valvesoftware.Steam
+      - io.kinvolk.Headlamp
+      - md.obsidian.Obsidian
+      - net.cozic.joplin_desktop
+      - org.prismlauncher.PrismLauncher
+      - org.videolan.VLC
+  tags:
+    - flatpaks
+
+- name: Install browsers via flatpak
+  become: true
+  community.general.flatpak:
+    name:
+      - com.google.Chrome
+      - org.chromium.Chromium
+      - org.mozilla.firefox
+  tags:
+    - flatpaks
